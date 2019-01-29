@@ -8,3 +8,11 @@ def home_view(request):
     
     return render(request,template_name,context_data)
     # return HttpResponse("This is Home.")
+
+
+def list_view(request):
+    template_name = 'property/list.html'
+    context_data = {}
+    
+    return render(request,template_name,context_data)
+    # return HttpResponse("This is Home.")
