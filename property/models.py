@@ -24,7 +24,7 @@ class PropertyTable(models.Model):
         ('unit/flat', 'Flat'),
         ('Townhouse', 'Villa'),
     )
-
+    
     property_name = models.CharField(max_length=30)
     property_address = models.CharField(max_length=60)
     property_age = models.IntegerField(default=0)
@@ -75,3 +75,10 @@ class Property_Owner_Details(models.Model):
     Address = models.TextField(max_length=144)
     age = models.IntegerField()
     pan_no = models.CharField(max_length=10)
+
+class materials(models.Model):
+    name = models.CharField(max_length = 20)
+    cost = models.IntegerField()
+
+    def __str__(self):
+        return self.name

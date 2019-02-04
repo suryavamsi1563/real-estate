@@ -1,12 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>This is List view</h1>
-</body>
-</html>
+{% extends 'snippets/base.html' %}
+{% block list %}
+    {% include 'snippets/nav.html' %}
+    <div class="container">
+        <h1>Properties list is as follows: </h1>
+        {% if property  %}
+        <table style="border:black 1px solid">
+            <tr style="border:black 1px solid">
+                <th>S.No</th>
+                <th>Property Name</th>
+                <th>Property Type</th>
+                <th>Property Details</th>
+            </tr>
+            {% for obj in property %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ obj.property_name }}</td>
+                <td>{{ obj.property_type }}</td>
+                <td><a href="#" class="btn btn-small btn-danger">View</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No properties available</p>
+        {% endif %}
+        <!-- {% for obj in property %}
+            {{obj.property_name}} <br>
+            Details as follows: 
+            <ul>
+            <li>Property age:  {{obj.property_age}} </li>
+            <li>Property type:  {{obj.property_type}} </li>
+            </ul>
+        {% empty %}
+            <p>No Properties are present.</p>
+        {% endfor %} -->
+    </div>  
+    {% include 'snippets/js.html' %}
+{% endblock %}

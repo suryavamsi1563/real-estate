@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from property.views import home_view
+from property.views import (home_view,
+                            about_view,
+                            contact_view)
 from transaction.views import tran_comp
 from django.conf.urls.static import static
 from django.conf import settings
@@ -23,7 +25,10 @@ from django.conf import settings
 
 urlpatterns = [
     url(r"^$",home_view),
-    url(r'^property/',include('property.urls')),
+    url(r"^home$",home_view,name='home'),
+    url(r"^about$",about_view,name='about'),
+    url(r"^contact$",contact_view,name='contact'),
+    url(r'^property/',include('property.urls',namespace='property')),
     url(r'^transaction/',include('transaction.urls')),
     url(r'^admin/', admin.site.urls),
 ]

@@ -1,16 +1,17 @@
+{% extends 'snippets/base.html' %}
 {% load static from staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+{% block home %}
     <link rel="stylesheet" href="{% static 'property/css/home.css' %}">
-</head>
-<body>
-    <h1>This is my home app.</h1>
-    <img src="{% static 'property/img/welcome.jpg' %}" alt="This is welcome">
-</body>
-</html>
+    </head>
+    {% include 'snippets/nav.html' %}
+    <div class="container">
+        <h1>Welcome</h1>
+        <p>Please choose your action.</p>
+        <a href="property/list/" class="btn btn-success btn-lg">Buy Property</a>
+        <a href="#" class="btn btn-danger btn-lg" >Sell Property</a>
+
+    </div>
+    {% include 'snippets/js.html' %}
+{% endblock home %}
+    <h1>Hello DUDEEEEE</h1>
