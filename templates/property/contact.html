@@ -2,5 +2,16 @@
 {% block about %}
     {% include 'snippets/nav.html' %}
     <h1>Contact US</h1>
+    <form method="POST">
+        <div class="container">
+            <div class="col-sm-6">
+                {{form2.as_p}}
+                {{formb.as_p}}
+            </div>
+        </div>
+        {% csrf_token %}
+        <input class="btn btn-danger" type="submit" value="Submit">
+    </form>
+    
     {% include 'snippets/js.html' %}
 {% endblock %}

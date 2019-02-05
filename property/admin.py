@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PropertyTable,PropertyDetails,Property_Owner_Details
+from .models import PropertyTable,PropertyDetails,Property_Owner_Details,Contacted
 # Register your models here.
 
 class PropertyAdmin(admin.ModelAdmin):
@@ -14,3 +14,4 @@ class PropertyOwnerDetailsAdmin(admin.ModelAdmin):
 admin.site.register(PropertyTable,PropertyAdmin,)
 admin.site.register(PropertyDetails,PropertyDetailsAdmin)
 admin.site.register(Property_Owner_Details,PropertyOwnerDetailsAdmin)
+admin.site.register(Contacted)

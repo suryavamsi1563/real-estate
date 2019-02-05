@@ -82,3 +82,20 @@ class materials(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Contacted(models.Model):
+    issue_choices = (
+        ('SELL', 'Selling a property'),
+        ('BUY', 'Buying Related'),
+        ('CONTACT', 'Contacting Seller or Buyer'),
+    )
+    name = models.CharField(max_length=40)
+    email = models.EmailField()
+    mobile = models.IntegerField()
+    issue_type=models.CharField(max_length=7,choices=issue_choices,default='CONTACT')
+    issue = models.TextField(max_length=256)
+    bot_field =models.CharField(max_length=1,blank=True, null=True)
+
+    def __str__(self):
+        return self.name
