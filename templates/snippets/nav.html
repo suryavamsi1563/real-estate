@@ -2,7 +2,9 @@
 {% url 'about' as about_url %}
 {% url 'contact' as contact_url %}
 {% url 'property:list' as list_url %}
-
+{% url 'regist' as regist_url %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Real APP</a>
@@ -21,11 +23,25 @@
                 <a class="nav-link " href="#">Sell Property</a>
             </li>
             <li class="nav-item">
+                    <a class="nav-link {% if request.path == regist_url %} active {% endif %}" href="{% url 'regist' %}">Registration</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {% if request.path == about_url %} active {% endif %}" href="{% url 'about' %}">About-Us</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {% if request.path == contact_url %} active {% endif %}" href="{% url 'contact' %}">Contact-us</a>
             </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                    <a class="nav-link {% if request.path == logout_url %} active {% endif %}" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+
+            <li class="nav-item">
+                    <a class="nav-link {% if request.path == login_url %} active {% endif %}" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

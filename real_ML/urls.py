@@ -21,7 +21,7 @@ from property.views import (home_view,
 from transaction.views import tran_comp
 from django.conf.urls.static import static
 from django.conf import settings
-
+from profiles.views import registration,login_view,logout_view
 
 urlpatterns = [
     url(r"^$",home_view),
@@ -30,6 +30,9 @@ urlpatterns = [
     url(r"^contact$",contact_view,name='contact'),
     url(r'^property/',include('property.urls',namespace='property')),
     url(r'^transaction/',include('transaction.urls')),
+    url(r'^registration/',registration,name='regist'),
+    url(r'^login/',login_view,name='login'),
+    url(r'^logout/',logout_view,name='logout'),
     url(r'^admin/', admin.site.urls),
 ]
 
