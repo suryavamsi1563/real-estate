@@ -1,5 +1,6 @@
 from django import forms
-from .models import Contacted
+from .models import Contacted,PropertyTable,PropertyDetails
+
 
 class ContactForm(forms.Form):
     issue_choices = (
@@ -48,3 +49,15 @@ class botform(forms.Form):
         if bot:
             raise forms.ValidationError("We dont allow Scrapping.")
         return bot
+
+class SellPropertyForm(forms.ModelForm):
+
+    class Meta():
+        model = PropertyTable
+        fields = "__all__"
+
+
+class PropertyDetailsForm(forms.ModelForm):
+    class Meta():
+        model = PropertyDetails
+        exclude = ['property_id']

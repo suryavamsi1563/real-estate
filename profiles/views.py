@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-
+from .models import UserProfile
 
 
 
@@ -16,7 +16,7 @@ def registration(request):
         'user_form':UserForm,
         'profile_form':UserProfileForm
     }
-
+    
     if request.POST:
         user_form = UserForm(data = request.POST)
         profile_form = UserProfileForm(data = request.POST)
@@ -25,8 +25,12 @@ def registration(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            
-            profile = profile_form.save()
+
+            profile = UserProfile.objects.create(
+                user = user,
+                address = request.POST.get('address'),
+                mobile_no = request.POST.get('mobile_no')
+            )
             profile.user = user
             profile.save()
 
@@ -42,6 +46,7 @@ def login_view(request):
     }
 
     if request.POST:
+        print(request.POST)
         username = request.POST.get('username')
         password = request.POST.get('password')
 

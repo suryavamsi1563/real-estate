@@ -2,6 +2,7 @@
 {% url 'about' as about_url %}
 {% url 'contact' as contact_url %}
 {% url 'property:list' as list_url %}
+{% url 'property:sell' as sell_url %}
 {% url 'regist' as regist_url %}
 {% url 'login' as login_url %}
 {% url 'logout' as logout_url %}
@@ -20,7 +21,7 @@
                 <a class="nav-link {% if request.path == list_url %} active {% endif %}" href="{% url 'property:list' %}">Buy Property</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">Sell Property</a>
+                <a class="nav-link {% if request.path == sell_url %} active {% endif %}" href="{% url 'property:sell' %}">Sell Property</a>
             </li>
             <li class="nav-item">
                     <a class="nav-link {% if request.path == regist_url %} active {% endif %}" href="{% url 'regist' %}">Registration</a>
@@ -42,6 +43,9 @@
                     <a class="nav-link {% if request.path == login_url %} active {% endif %}" href="{% url 'login' %}">Login</a>
             </li>
             {% endif %}
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary" href="/transaction/test/">Test</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

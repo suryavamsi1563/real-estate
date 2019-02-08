@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import PropertyTable
-from .forms import ContactForm,ContactModalForm,botform
+from .forms import ContactForm,ContactModalForm,botform,SellPropertyForm,PropertyDetailsForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -52,3 +52,9 @@ def about_view(request):
     
     return render(request,template_name,context_data)
     # return HttpResponse("This is Home.")
+
+def sell_property_view(request):
+    template_name = "property/sell.html"
+    context_data = {"form":SellPropertyForm,'form_details':PropertyDetailsForm}
+
+    return render(request,template_name,context_data)
