@@ -1,0 +1,16 @@
+{% extends 'snippets/base.html' %}
+{% block registration %}
+    {% include 'snippets/nav.html' %}
+    <h1>Register here</h1>
+    <form method="POST">
+        <div class="container">
+            <div class="col-sm-6">
+                {{user_form.as_p}}
+                {{profile_form.as_p}}
+                {% csrf_token %}
+                <input class="btn btn-danger" type="submit" value="Register">
+            </div>
+        </div>
+    </form>
+    {% include 'snippets/js.html' %}
+{% endblock %}

@@ -1,0 +1,64 @@
+  <div class="container Signup">
+    <h2>Get asset</h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signup">Sign-up</button>
+    <!-- Modal -->
+    <div class="modal fade" id="signup" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Sign-up Modal</h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" onsubmit="signup()">
+                <div class="form-group">
+                    <label for="pw" style="font-size:22px;">Username</label>
+                    <input type="text" name = 'pw' id="signup-user" required placeholder='Enter username' class="form-control inputsm validate">
+                </div>
+                <div class="form-group">
+                    <label for="pw" style="font-size:22px;">Email-ID</label>
+                    <input type="email" name = 'pw' id="signup-email" required placeholder='Enter email' class="form-control inputsm validate">
+                </div>
+                <div class="form-group">
+                    <label for="cpw" style="font-size:22px;">Password</label>
+                    <input type="password" name='cpw' id="signup-password" required placeholder='Enter Password' class="form-control validate">
+                </div>
+                <button class="btn btn-success btnsm" type="submit" name = "Signup">Signup</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'https://API_ID.execute-api.API_REGION.amazonaws.com/STAGE/');
+xhr.onreadystatechange = function (event) {
+  console.log(event.target.response);
+}
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify({age: 26, height: 71, income: 2100}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

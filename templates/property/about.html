@@ -1,0 +1,10 @@
+{% extends 'snippets/base.html' %}
+{% load static from staticfiles %}
+{% block about %}
+    <link rel="stylesheet" href="{% static 'property/css/about.css' %}">
+    
+    </head>
+    {% include 'snippets/nav.html' %}
+    <h1>ABOUT US</h1>
+    {% include 'snippets/js.html' %}
+{% endblock %}
