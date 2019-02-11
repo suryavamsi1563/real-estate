@@ -66,3 +66,18 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/login')
+
+
+from django.views import View
+
+class ProfileView(View):
+    def get(self, request):
+        # <view logic>
+        print(request)
+        template_name = "profiles/profile_view.html"
+        
+        context = {
+
+        }
+
+        return render(request,template_name,context)

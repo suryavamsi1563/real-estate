@@ -1,0 +1,11 @@
+{% extends 'snippets/base.html' %}
+{% block detail %}
+    {% include 'snippets/nav.html' %}
+    <br>
+    <form action="" method="post">
+        <h1>Do you want to delete the property {{object}}</h1>
+        {{form.as_p}}{% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
+    
+{% endblock %}

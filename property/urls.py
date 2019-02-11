@@ -14,9 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from .views import home_view,list_view,sell_property_view
+from .views import (home_view,
+                    PropertyList,
+                    sell_property_view,
+                    PropertyDetail,
+                    PropertyCreateView,
+                    PropertyUpdateView,
+                    PropertyDeleteView)
 
 urlpatterns = [
-    url(r'^buy',list_view,name='list'),
+    url(r'^buy',PropertyList.as_view(),name='list'),
+    url(r'^view/(?P<pk>\d+)',PropertyDetail.as_view(),name='detail'),
+    url(r'^update/(?P<pk>\d+)',PropertyUpdateView.as_view(),name='update'),
+    url(r'^delete/(?P<pk>\d+)',PropertyDeleteView.as_view(),name='delete'),
     url(r'^sell',sell_property_view,name='sell'),
+    url(r'^create',PropertyCreateView.as_view(),name='create'),
 ]

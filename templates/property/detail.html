@@ -1,0 +1,15 @@
+{% extends 'snippets/base.html' %}
+{% block detail %}
+    {% include 'snippets/nav.html' %}
+    <div class="container">
+        <h1>Property-Name: </h1>{{object.property_name}}
+        <h1>Proepert-Address: </h1>
+        {{object.property_address}}
+        <h1>Property Age: </h1>
+        {{object.property_age}}
+        <h2>Property Type</h2>
+        {{object.property_type}}
+        <h2>Property Pincode</h2>
+        {{object.property_pincode}}
+    </div>
+{% endblock %}

@@ -3,36 +3,33 @@
     {% include 'snippets/nav.html' %}
     <div class="container">
         <h1>Properties list is as follows: </h1>
-        {% if property  %}
-        <table style="border:black 1px solid">
-            <tr style="border:black 1px solid">
+        {% if object_list  %}
+        <table >
+            <tr>
                 <th>S.No</th>
                 <th>Property Name</th>
                 <th>Property Type</th>
                 <th>Property Details</th>
             </tr>
-            {% for obj in property %}
+            {% for obj in object_list %}
             <tr>
                 <td>{{forloop.counter}}</td>
                 <td>{{ obj.property_name }}</td>
                 <td>{{ obj.property_type }}</td>
-                <td><a href="#" class="btn btn-small btn-danger">View</a></td>
+                <td><a href="view/{{obj.id}}" class="btn btn-small btn-primary">View</a></td>
+                <td><a href="update/{{obj.id}}" class="btn btn-small btn-warning">Update</a></td>
+                <td><a href="delete/{{obj.id}}" class="btn btn-small btn-danger">Delete</a></td>
             </tr>
             {% endfor %}
         </table>
         {% else %}
         <p>No properties available</p>
         {% endif %}
-        <!-- {% for obj in property %}
-            {{obj.property_name}} <br>
-            Details as follows: 
-            <ul>
-            <li>Property age:  {{obj.property_age}} </li>
-            <li>Property type:  {{obj.property_type}} </li>
-            </ul>
-        {% empty %}
-            <p>No Properties are present.</p>
-        {% endfor %} -->
-    </div>  
+    </div>
+    <br>
+    <div class="container">
+        <a href="/property/create" class="btn btn-primary">Add a Property</a>
+    </div>
+    
     {% include 'snippets/js.html' %}
 {% endblock %}

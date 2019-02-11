@@ -39,7 +39,7 @@ class ContactForm(forms.Form):
 class ContactModalForm(forms.ModelForm):
     class Meta():
         model = Contacted
-        # fields = "__all__"  
+        # fields = "__all__"
         exclude = ['bot_field']
 
 class botform(forms.Form):

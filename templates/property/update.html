@@ -1,0 +1,10 @@
+{% extends 'snippets/base.html' %}
+{% block detail %}
+    {% include 'snippets/nav.html' %}
+    <br>
+    <form action="" method="post">
+        {{form.as_p}}{% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Update">
+    </form>
+    
+{% endblock %}
