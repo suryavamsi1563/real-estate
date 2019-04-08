@@ -16,16 +16,6 @@ class UserProfile(models.Model):
 
     # Custom Fields
     address = models.CharField(max_length=60)
-    listed_properties = models.ForeignKey(PropertyTable,
-                                        related_name='list_prope_user',
-                                        blank=True,
-                                        on_delete=models.CASCADE,
-                                        null=True)
-    contacted_properties = models.ForeignKey(PropertyTable,
-                                        related_name='contact_prop_user',
-                                        blank=True,
-                                        on_delete=models.CASCADE,
-                                        null=True)
     mobile_no = models.IntegerField()
     pan_no = models.CharField(max_length=10)
     Occupation = models.CharField(max_length=7,choices=occupation_choice,default='Public')

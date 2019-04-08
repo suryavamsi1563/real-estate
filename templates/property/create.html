@@ -1,10 +1,61 @@
 {% extends 'snippets/base.html' %}
-{% block detail %}
-    {% include 'snippets/nav.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
     <br>
-    <form action="" method="post">
-        {{form.as_p}}{% csrf_token %}
-        <input type="submit" class="btn btn-danger" value="Add">
+    <h3>List your property</h3>
+    <div class="col-sm-6">
+    <form action="" enctype="multipart/form-data" method="post">
+        {{form|crispy}}{% csrf_token %}
+        <input type="button" class="btn btn-primary" id="calc_ml_price" value="Calculate ML Price">
+        <p style="display:inline-block;" id="ml_price" class="ml-4"></p>
+        <!-- <div class="form-group mt-2">
+            <label for="property_price">Price*</label>
+            <input type="number" id="property_price" class="form-control " name="property_price">
+        </div> -->
+        <br>
+        <input type="submit" value="Add" class="btn btn-danger mt-3">
     </form>
-    
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  <script>
+    $("#calc_ml_price").click(function () {
+      var name = $("#id_property_name").val()
+      var address = $("#id_property_address").val()
+      var rooms = $("#id_property_rooms").val()
+      var age = $("#id_property_age").val()
+      var type = $("#id_property_type").val()
+      var pincode = $("#id_property_pincode").val()
+      var location = $("#id_property_location").val()
+      console.log(name)
+      console.log(address)
+      console.log(rooms)
+      console.log(age)
+      console.log(type)
+      console.log(pincode)
+      console.log(rooms)
+      console.log(location)
+
+      $.ajax({
+        url: '/property/ajax/machine_learning/',
+        data: {
+          'name': name,
+          'address':address,
+          'age':age,
+          'type':type,
+          'pincode':pincode,
+          'location':location,
+          'rooms':rooms
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data.Predicted_price);
+            $("#ml_price").text(data.Predicted_price);
+        }
+      });
+    });
+  </script>
 {% endblock %}

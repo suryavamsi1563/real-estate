@@ -1,19 +1,76 @@
-{% extends 'snippets/base.html' %}
-{% block login %}
-    {% include 'snippets/nav.html' %}
-    <h1>Login here</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            /* background-color: rgb(221,172,19); */
+        }
+        .login{
+            color: #1e1e1e;
+            /* text-align: center;
+            margin-top: 150px; */
+        }
+        .welcome{
+            font-size: 36px;
+            font-family: verdana;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .login-btn{
+            color: #1e1e1e;
+            background-color: white;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+            padding: 10px 35px;
+            cursor: pointer;
+        }
+        .login-btn:hover{
+            background-color: #1e1e1e;
+            color: white;
+
+        }
+        .input{
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-style: italic;
+            border:1px solid #1e1e1e;
+        }
+
+        .input:focus{
+            outline: none;
+        }
+
+    </style>
+
+</head>
+<body>
     <form method="POST">
-        <div class="container">
-            <div class="col-sm-6">
+        <div class="container login">
+            <h3 class="welcome">Welcome To Property</h3>
+            <h3 class="welcome">Price Prediction System</h3>
+            <div >
                 <form method="post">
                         {% csrf_token %}
-                    username: <input type="text" name = "username">
-                    password: <input type="password" name="password">
-                    <input class="btn btn-danger" type="submit" value="Login">
-
+                    <p><input class="input" required type="text" name = "username" placeholder="Username"></p>
+                    </p><input class="input" required type="password" name="password" placeholder="Password"></p>
+                    <input class="login-btn" type="submit" value="Login">
+                    <a href="/registration" ><input class="login-btn" type="button" value="Sign-Up"></a>
                 </form>
             </div>
         </div>
+        <div class="container">
+            {% if error %}
+                <p style="color:red;">{{error_message}}</p>
+            {% endif %}
+        </div>
     </form>
     {% include 'snippets/js.html' %}
-{% endblock %}
+
+</body>
+</html>
+    

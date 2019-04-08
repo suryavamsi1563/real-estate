@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
     tr, table, th, td {
-        border: 1px black solid;
         padding: 10px;
         text-align: center;
     }
@@ -21,19 +20,15 @@
         margin-top: 20px;
     }
     </style>
-    {% block home %}
+</head>
+<body>
+    {% include 'snippets/nav.html' %}
+    {% block content %}
     {% endblock %}
-    {% block list %}
+    {% include 'snippets/js.html' %}
+
+
+    {% block javascript %}
     {% endblock %}
-    {% block about %}
-    {% endblock %}
-    {% block contact %}
-    {% endblock %}
-    {% block login %}
-    {% endblock %}
-    {% block registration %}
-    {% endblock %}
-    {% block profile %}
-    {% endblock %}
-    {% block detail %}
-    {% endblock %}
+</body>
+</html>

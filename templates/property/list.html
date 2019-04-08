@@ -1,14 +1,17 @@
 {% extends 'snippets/base.html' %}
-{% block list %}
-    {% include 'snippets/nav.html' %}
+{% block content %}
     <div class="container">
         <h1>Properties list is as follows: </h1>
+        <div class="container" >
+                <a href="{% url 'property:create' %}" class="btn btn-primary" style="float:right;">Add a Property</a>
+        </div>
         {% if object_list  %}
         <table >
             <tr>
                 <th>S.No</th>
                 <th>Property Name</th>
                 <th>Property Type</th>
+                <th>Property Price</th>
                 <th>Property Details</th>
             </tr>
             {% for obj in object_list %}
@@ -16,9 +19,8 @@
                 <td>{{forloop.counter}}</td>
                 <td>{{ obj.property_name }}</td>
                 <td>{{ obj.property_type }}</td>
+                <td>{{ obj.property_price }}</td>
                 <td><a href="view/{{obj.id}}" class="btn btn-small btn-primary">View</a></td>
-                <td><a href="update/{{obj.id}}" class="btn btn-small btn-warning">Update</a></td>
-                <td><a href="delete/{{obj.id}}" class="btn btn-small btn-danger">Delete</a></td>
             </tr>
             {% endfor %}
         </table>
@@ -27,9 +29,5 @@
         {% endif %}
     </div>
     <br>
-    <div class="container">
-        <a href="/property/create" class="btn btn-primary">Add a Property</a>
-    </div>
-    
     {% include 'snippets/js.html' %}
 {% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'snippets/base.html' %}
+{% block content %}
+<div class="container">
+    <h3>Profile Update</h3>
+    <div class="col-md-4">
+        <form method="POST">{% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" value="{{ user.email }}">
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <select name="occupation" value="{{occupation}}" class="form-control" id="occupation">
+                    <option>Private</option>
+                    <option>Public</option>
+                    <option>Self-Employed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea name = "address" class="form-control" id="address" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile-No</label>
+                <input type="tel" name = "mobile"  pattern="[0-9]{10}" class="form-control" maxlength="10" minlength="10" id="mobile"value="{{mobile}}"/>
+            </div>
+            <div class="form-group">
+                <label for="pan">PAN-No</label>
+                <input type="text" name = "pan" class="form-control" maxlength="10" minlength="10" id="pan"value="{{pan}}"/>
+            </div>
+            <input type="hidden" name="address" id="hidden" value="{{address}}">
+        <button type="submit" class="btn btn-warning">Update</button>
+</form>
+    </div>
+</div>
+<script>
+    address = document.getElementById("hidden").value
+    document.getElementById("address").value = address
+</script>
+{% endblock %}

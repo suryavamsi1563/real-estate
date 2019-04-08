@@ -1,15 +1,47 @@
 {% extends 'snippets/base.html' %}
-{% block detail %}
-    {% include 'snippets/nav.html' %}
+{% block content %}
     <div class="container">
-        <h1>Property-Name: </h1>{{object.property_name}}
-        <h1>Proepert-Address: </h1>
-        {{object.property_address}}
-        <h1>Property Age: </h1>
-        {{object.property_age}}
-        <h2>Property Type</h2>
-        {{object.property_type}}
-        <h2>Property Pincode</h2>
-        {{object.property_pincode}}
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h3 class="mb-3">Property Details:</h3>
+                <h4 style="display:inline-block;">Property-Name: </h4>
+                    <span>{{object.property_name}}</span> <br>
+                <h4 style="display:inline-block;">Property Type:</h4>
+                <span>{{object.property_type}} <br></span>
+                <h4 style="display:inline-block;">Proepert-Address: </h4>
+                <span>{{object.property_address}} <br></span>
+                <h4 style="display:inline-block;">Property Pincode:</h4>
+                <span>{{object.property_pincode}} <br></span>
+                <h4 style="display:inline-block;">Property Price:</h4>
+                <span>{{object.property_price}} <br></span>
+            </div>
+            <div class="col-md-6 mt-5">
+                {% if object.image %}
+                <img src="{{ object.image.url }}" alt="" srcset="">
+                {% else %}
+                <p>No image to display</p>
+                {% endif %}
+                <div>
+                    <h4  style="display:inline-block;">Guided Price :</h4> <span>{{guided_price}}</span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <h3 class="mb-3">Owner Details are: </h3>
+                <h4 style="display:inline-block;">Owner Username: </h4><span> {{user1.username}} </span><br>
+                <h4 style="display:inline-block;">Owner Address: </h4> <span> {{profile.address}} </span><br>
+                <h4 style="display:inline-block;">Owner Mobile No:</h4><span> {{profile.mobile_no}} </span><br>
+                <h4 style="display:inline-block;">Owner Pan No:</h4> <span> {{profile.pan_no}} </span><br>
+                <h4 style="display:inline-block;">Owner Occupation:</h4> <span> {{profile.Occupation}} </span><br>
+            </div>
+        </div>
+
+        <div>
+        <br/>
+        <!-- <a href="{property/update/{{object.id}}" class="btn btn-small btn-warning">Update</a> -->
+        <!-- <a href="delete/{{object.id}}" class="btn btn-small btn-danger">Delete</a> -->
+        </div>
     </div>
 {% endblock %}

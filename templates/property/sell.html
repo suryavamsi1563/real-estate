@@ -1,19 +1,20 @@
 {% extends 'snippets/base.html' %}
-{% block about %}
-    {% include 'snippets/nav.html' %}
-    <h1>Fill the sell form</h1>
-    <form method="POST">
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h3>List Your Property</h3>
+        <form method="POST">
         <div class="container">
             <div class="col-sm-6">
                 <!-- {{form2.as_p}}
                 {{formb.as_p}} -->
-                {{form.as_p}}
-                {{form_details.as_p}}
+                {{form|crispy}}
+                {{form_details|crispy}}
                 {% csrf_token %}
                 <input class="btn btn-danger" type="submit" value="List">
             </div>
         </div>
     </form>
-    
+    </div>
     {% include 'snippets/js.html' %}
 {% endblock %}

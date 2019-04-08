@@ -1,17 +1,13 @@
 {% extends 'snippets/base.html' %}
 {% load static from staticfiles %}
 
-{% block home %}
-    <link rel="stylesheet" href="{% static 'property/css/home.css' %}">
-    </head>
-    {% include 'snippets/nav.html' %}
+{% block content %}
     <div class="container">
         <h1>Welcome</h1>
         <p>Please choose your action.</p>
-        <a href="property/list/" class="btn btn-success btn-lg">Buy Property</a>
-        <a href="#" class="btn btn-danger btn-lg" >Sell Property</a>
-
+        <!-- <a href="{% url 'property:list' %}" class="btn btn-success btn-lg">Buy Property</a> -->
+        <a href="{% url 'property:list' %}" class="btn btn-success btn-lg">Buy Property</a>
+        <!-- <a href="{% url 'property:sell' %}" class="btn btn-danger btn-lg" >Sell Property</a> -->
+        <a href="{% url 'property:create' %}" class="btn btn-danger btn-lg" >Sell Property</a>
     </div>
-    {% include 'snippets/js.html' %}
-{% endblock home %}
-    <h1>Hello DUDEEEEE</h1>
+{% endblock %}

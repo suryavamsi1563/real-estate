@@ -20,7 +20,8 @@ from .views import (home_view,
                     PropertyDetail,
                     PropertyCreateView,
                     PropertyUpdateView,
-                    PropertyDeleteView)
+                    PropertyDeleteView,
+                    validate_username)
 
 urlpatterns = [
     url(r'^buy',PropertyList.as_view(),name='list'),
@@ -29,4 +30,5 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)',PropertyDeleteView.as_view(),name='delete'),
     url(r'^sell',sell_property_view,name='sell'),
     url(r'^create',PropertyCreateView.as_view(),name='create'),
+    url(r'^ajax/machine_learning/$',validate_username,name="calc_ml")
 ]

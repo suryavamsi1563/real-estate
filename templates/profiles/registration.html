@@ -1,16 +1,93 @@
-{% extends 'snippets/base.html' %}
-{% block registration %}
-    {% include 'snippets/nav.html' %}
-    <h1>Register here</h1>
-    <form method="POST">
-        <div class="container">
-            <div class="col-sm-6">
-                {{user_form.as_p}}
-                {{profile_form.as_p}}
-                {% csrf_token %}
-                <input class="btn btn-danger" type="submit" value="Register">
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            /* background-color: rgb(221,172,19); */
+        }
+        /* .login{
+            color: #1e1e1e;
+            text-align: center;
+            margin-top: 150px;
+        }
+        .welcome{
+            font-size: 36px;
+            font-family: verdana;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .login-btn{
+            color: #1e1e1e;
+            background-color: white;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+            padding: 10px 35px;
+            cursor: pointer;
+        }
+        .login-btn:hover{
+            background-color: #1e1e1e;
+            color: white;
+
+        }
+        input{
+            padding: 10px 25px;
+            border-radius: 10px;
+
+            font-style: italic;
+            border:1px solid #1e1e1e;
+        }
+
+        input:focus{
+            outline: none;
+        }
+        label{
+            font-size: 20px;
+            color: #1e1e1e;
+            display: block;
+            margin: 0px;
+        } */
+
+    </style>
+
+</head>
+<body>
+    <div class="container register">
+            <h3 class="welcome">Sign-up here</h3>
+            <div class="col-md-4">
+                <form method="post" name = 'sign_up_form'>
+                        {{user_form|crispy}}
+                        {{profile_form|crispy}}
+                        {% csrf_token %}
+                    <button class="btn btn-success" id="signup-btn" >Sign-Up</button>
+                    <a href="/login" ><input class="btn btn-primary" type="button" value="Sign-In"></a>
+                </form>
             </div>
         </div>
     </form>
     {% include 'snippets/js.html' %}
-{% endblock %}
+
+<script>
+    // username = document.getElementById('id_username').value
+    // email    = document.getElementById('id_email').value
+    // password = document.getElementById('id_password').value
+    // mobile   = document.getElementById('id_mobile_no').value
+    // pan      = document.getElementById('id_pan_no').value
+    // occupation      = document.getElementById('id_Occupation').value
+
+    // signup_btn = document.getElementById("signup-btn")
+    // if (username & email & password & mobile & pan & occupation){
+    //     signup_btn.removeAttribute("disabled");
+    // } else{
+    //     signup_btn.disabled = true;
+    // }
+
+
+</script>
+</body>
+</html>
