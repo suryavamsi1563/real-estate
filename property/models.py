@@ -7,6 +7,11 @@ from django.contrib.auth.models import User
 def upload_property_images(instance,filename):
     return "property/images/{}/{}".format(instance.id,filename)
 
+def upload_property_images2(instance,filename):
+    return "property/images2/{}/{}".format(instance.id,filename)
+
+def upload_property_images3(instance,filename):
+    return "property/images3/{}/{}".format(instance.id,filename)
 
 class PropertyTable(models.Model):
 
@@ -18,10 +23,33 @@ class PropertyTable(models.Model):
         ('Townhouse', 'Villa'),
     )
     propery_loc_choices = (
-        ('North', 'Northern Metropoliton'),
-        ('South', 'Southern Metropoliton'),
-        ('East', 'Eastern Metropoliton'),
-        ('West', 'Western Metropoliton'),
+        ('East', 'Amanora'),
+        ('West', 'Aundh'),
+        ('South', 'Balaji nagar'),
+        ('West', 'Baner'),
+        ('West', 'Bavdhan'),
+        ('South', 'Bibwewadi'),
+        ('East', 'Fatima nagar'),
+        ('North', 'Gokul nagar'),
+        ('East', 'Hadapsar'),
+        ('North', 'Kalyani nagar'),
+        ('East', 'Karadhi'),
+        ('South', 'Katraj'),
+        ('South', 'Kondhwa'),
+        ('West', 'Kothrud'),
+        ('West', 'Lavale'),
+        ('North', 'Lohegoan'),
+        ('East', 'Magarpatta'),
+        ('East', 'Modi colony'),
+        ('South', 'Nanded'),
+        ('West', 'Pashan'),
+        ('West', 'Paud'),
+        ('East', 'Pune contonment'),
+        ('North', 'Ram wadi'),
+        ('South', 'Sai nagar'),
+        ('North', 'Shanti nagar'),
+        ('North', 'Viman Nagar'),
+        ('North', 'Yerawada'),
     )
     property_rooms_choices = (
         ('1','1'),
@@ -48,36 +76,12 @@ class PropertyTable(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     image = models.ImageField(upload_to=upload_property_images)
+    image2 = models.ImageField(upload_to=upload_property_images2,blank=True, null=True)
+    image3 = models.ImageField(upload_to=upload_property_images3,blank=True, null=True)
     property_price = models.IntegerField(default=0)
 
     def __str__(self):
         return self.property_name
-
-class PropertyDetails(models.Model):
-    propery_parking = (
-        (True, 'Available'),
-        (False, 'Not Available')
-    )
-    propery_facing = (
-        ('N', 'North'),
-        ('S', 'South'),
-        ('E', 'East'),
-        ('W', 'West'),
-    )
-    property_id = models.OneToOneField(PropertyTable,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
-    property_area = models.IntegerField()
-    property_bedroom = models.IntegerField()
-    property_parking = models.BooleanField(max_length=9,
-                                    choices=propery_parking,
-                                    default=True)
-    property_buid_year = models.DateField(default = date(1950,12,12))
-    property_facing = models.CharField(max_length=9,
-                                    choices=propery_facing,
-                                    default='N')
-
 
 class Contacted(models.Model):
     issue_choices = (

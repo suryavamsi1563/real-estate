@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url
 from .views import (home_view,
                     PropertyList,
-                    sell_property_view,
                     PropertyDetail,
                     PropertyCreateView,
                     PropertyUpdateView,
@@ -28,7 +27,6 @@ urlpatterns = [
     url(r'^view/(?P<pk>\d+)',PropertyDetail.as_view(),name='detail'),
     url(r'^update/(?P<pk>\d+)',PropertyUpdateView.as_view(),name='update'),
     url(r'^delete/(?P<pk>\d+)',PropertyDeleteView.as_view(),name='delete'),
-    url(r'^sell',sell_property_view,name='sell'),
     url(r'^create',PropertyCreateView.as_view(),name='create'),
     url(r'^ajax/machine_learning/$',validate_username,name="calc_ml")
 ]

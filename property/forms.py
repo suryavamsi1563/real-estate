@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contacted,PropertyTable,PropertyDetails
+from .models import Contacted,PropertyTable
 
 
 class ContactForm(forms.Form):
@@ -58,13 +58,4 @@ class SellPropertyForm(forms.ModelForm):
         # fields = ['property_name','property_price','property_address','property_type','property_pincode']
         widgets = {
             
-        }
-
-class PropertyDetailsForm(forms.ModelForm):
-    class Meta():
-        model = PropertyDetails
-        exclude = ['property_id']
-        widgets = {
-            'propery_parking': forms.Select(attrs={'cols': 80, 'rows': 20}),
-            'propery_facing':forms.ChoiceField()
         }

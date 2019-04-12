@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import PropertyTable
 from profiles.models import UserProfile
-from .forms import ContactForm,ContactModalForm,botform,SellPropertyForm,PropertyDetailsForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy,reverse
@@ -11,6 +10,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse,HttpResponseRedirect
 from django.forms import Textarea
 from regression_code.machine import pred_price
+from .forms import ContactForm
 
 
 # Create your views here.
@@ -22,15 +22,6 @@ def home_view(request):
     context_data = {}
 
     return render(request,template_name,context_data)
-
-
-# def list_view(request):
-#     template_name = 'property/list.html'
-#     context_data = {}
-#     property_all = PropertyTable.objects.all()
-#     context_data['property'] = property_all
-#     return render(request,template_name,context_data)
-#     # return HttpResponse("This is Home.")
 
 @method_decorator(login_required, name='dispatch')
 class PropertyList(ListView):
@@ -58,7 +49,6 @@ class PropertyDetail(DetailView):
             type_ = 1
         else:
             type_ = 3
-
         size = int(self.object.property_rooms)
         if self.object.property_location == 'South':
             location = 2
@@ -83,7 +73,10 @@ class PropertyCreateView(CreateView):
             'property_location',
             'property_pincode',
             'image',
-            'property_price']
+            'image2',
+            'image3',
+            'property_price',
+            ]
     widgets = {
         'property_address': Textarea(attrs={'cols': 80, 'rows': 20}),
     }
@@ -119,7 +112,7 @@ class PropertyDeleteView(DeleteView):
 @login_required
 def contact_view(request):
     template_name = 'property/contact.html'
-    context_data = {'form':ContactForm,'form2':ContactModalForm,'formb':botform}
+    context_data = {'form':ContactForm}
 
 
     if request.method =='POST':
@@ -143,14 +136,6 @@ def about_view(request):
     context_data = {}
     
     return render(request,template_name,context_data)
-
-@login_required
-def sell_property_view(request):
-    template_name = "property/sell.html"
-    context_data = {"form":SellPropertyForm,'form_details':PropertyDetailsForm}
-
-    return render(request,template_name,context_data)
-
 
 def validate_username(request):
     username = request.GET.get('username', None)
